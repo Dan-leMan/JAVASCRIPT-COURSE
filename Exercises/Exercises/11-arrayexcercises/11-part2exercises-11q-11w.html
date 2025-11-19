@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11q onwards</title>
+</head>
+<body>
+  
+  <script>
+    //find first word in array. If not there return -1. 
+    //11q.
+    function findIndex(array, word){
+      index = -1;
+      for(i = 0; i < array.length; i++){
+        if(array[i] === word){
+          return index = i;
+        }
+      }
+      return -1;
+    }
+
+    console.log(findIndex(['green','red','blue','red'],'red'));
+    console.log(findIndex(['green','red','blue','red'],'yellow'));
+    /*
+
+    function removeEgg(foods){
+      const results = [];
+      for(i = 0; i < foods.length; i++){
+        if (foods[i] === 'egg'){
+          continue;
+        }
+        results.push(foods[i]);
+      }
+      return results;
+    }
+
+    console.log(removeEgg(['egg','apple','egg','egg','ham']));
+    */
+
+
+    //>>>
+    //only remove first two eggs.
+
+    /*function removeEgg(foods){
+      const results = [];
+      let eggsRemoved = 0;
+      for(i = 0; i < foods.length; i++){
+        if (foods[i] === 'egg' && eggsRemoved <2){
+          eggsRemoved ++;
+          continue;
+        }
+        results.push(foods[i]);
+      }
+      return results;
+    }
+
+    console.log(removeEgg(['egg','apple','egg','egg','ham']));
+    */
+
+
+    //remove last two eggs.
+    //Below uses reverse method.
+    function removeEgg(foods){
+      const results = [];
+      let eggsRemoved = 0;
+      const reversal = foods.reverse();
+
+      for(i = 0; i < reversal.length; i++){
+        if (reversal[i] === 'egg' && eggsRemoved <2){
+          eggsRemoved ++;
+          continue;
+        }
+        results.push(reversal[i]);
+      }
+      return results.reverse();
+    }
+
+    console.log(removeEgg(['egg','apple','egg','egg','ham']));
+
+
+
+    //use slice to create new array  instead of modifiying.
+    function removeEggCopy(foods){
+      const results = [];
+      let eggsRemoved = 0;
+      const copyfoods = foods.slice();
+      const reversal = copyfoods.reverse();
+
+      for(i = 0; i < reversal.length; i++){
+        if (reversal[i] === 'egg' && eggsRemoved <2){
+          eggsRemoved ++;
+          continue;
+        }
+        results.push(reversal[i]);
+      }
+      return results.reverse();
+    }
+
+    console.log(removeEggCopy(['egg','apple','egg','egg','ham']));
+
+    //11v.
+
+    function FizzBuzz(amount){
+      for (i = 1; i <= amount; i++){
+        if(i % 5 === 0 && i % 3 === 0){
+          console.log('FizzBuzz');
+          continue;
+        }
+        if(i % 3 === 0){
+          console.log('Fizz');
+          continue;
+        }
+        if(i % 5 === 0){
+          console.log('Buzz');
+          continue;
+        } else {console.log(i);}
+      }
+    }
+    FizzBuzz(20);
+    
+
+    //11w. Using the findIndex() function above. Make a function which takes an array of strings and returns an array where
+    //each stirng appears once. (no duplicates).
+
+    function findIndexCopy(array, word){ 
+      for(let i = 0; i < array.length; i++){
+        if(array[i] === word){
+          return i;
+        }
+      }
+      return -1;
+    }
+
+    function unique(arrayUnique){
+      const uniqueResult = [];
+
+      for(let i = 0; i < arrayUnique.length; i++){
+       const word = arrayUnique[i];
+
+       if(findIndexCopy(uniqueResult, word) === -1){ //just copied findIndex to findIndexCopy from above for readability
+        uniqueResult.push(word);
+       }
+      }
+      return uniqueResult;
+    }
+
+
+    console.log(unique(['green','red','blue','red']));
+    console.log(unique(['red','green','green','red']));
+   
+
+
+  </script>
+
+</body>
+</html>

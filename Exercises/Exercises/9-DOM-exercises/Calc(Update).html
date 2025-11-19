@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calc-DOMw</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      background-color: black;
+    }
+
+    .calc-object{
+      box-sizing: border-box;
+      width: 500px;
+      padding: 30px;
+      display: grid;
+      grid-auto-rows: auto;
+      gap: 12px;
+      border-radius: 50px;
+      border: 5px solid #333;
+      background: rgb(21,21,21);
+    }
+
+    .calcbuttons{
+      display: grid;
+      gap: 8px;
+    }
+
+    .js-output{
+      box-sizing: border-box;
+      height: 70px;
+      padding: 15px;
+      margin: 0;
+      border-radius: 12.5px;
+      background: rgb(177,162,162);
+
+      font-size: 50px;
+      font-weight: 500;
+
+      text-align: right;
+
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+
+    button{
+      height: 100px;
+      width: 100px;
+      background: rgb(67,64,64);
+      color: #fff;
+      font-size: 35px;
+      border-radius: 50px;
+      border: 0;
+      margin: 2px 2px 0 2px;
+    }
+
+    button:hover{
+          opacity: 0.7;
+    }
+
+    button:active{
+      background-color: orange;
+      transition-timing-function: 1s;
+    }
+  </style>
+</head>
+<body>
+  <main class="calc-object">
+    <div class="js-output">
+      <p class='js-output-text'></p>
+    </div>
+    <div class="calcbuttons">
+      <p>
+        <button onclick="
+          updateCalculation('1');
+        ">1</button>
+
+        <button onclick="
+          updateCalculation('2');
+        ">2</button>
+
+        <button onclick="
+          updateCalculation('3');
+        ">3</button>
+
+        <button onclick="
+          updateCalculation(' + ');
+        ">+</button>
+      </p>
+
+      <p>
+        <button onclick="
+        updateCalculation('4');
+        ">4</button>
+
+        <button onclick="
+          updateCalculation('5');
+        ">5</button>
+
+        <button onclick="
+          updateCalculation('6');
+        ">6</button>
+
+        <button onclick="
+          updateCalculation(' - ');
+        ">-</button>
+      </p>
+
+      <p>
+        <button onclick="
+          updateCalculation('7');
+        ">7</button>
+
+        <button onclick="
+          updateCalculation('8');
+        ">8</button>
+
+        <button onclick="
+          updateCalculation('9');
+        ">9</button>
+
+        <button onclick="
+          updateCalculation(' * ');
+        ">*</button>
+      </p>
+
+      <p>
+        <button onclick="
+          updateCalculation('0');
+        ">0</button>
+
+        <button onclick="
+          updateCalculation('.');
+        ">.</button>
+
+        <button onclick="
+          // Note: eval() takes a string and runs it as code.
+          // Avoid using eval() in real world projects since
+          // it can potentially be given harmful code to run.
+          // Only use eval() for learning purposes.
+          updateCalculation('SUM');
+
+          ">=</button>
+
+        <button onclick="
+          updateCalculation(' / ');
+          ">/</button>
+        </p>
+
+        <p>
+          <button onclick="
+            updateCalculation('clear');
+          ">Clear</button>
+        </p>
+      </div>
+    </main>
+
+  <script>
+    //don't forget to do previous DOM exercises.
+
+    let updated = localStorage.getItem('updated') || '';
+    document.querySelector('.js-output').innerHTML = `${updated}`;
+
+    /*function updateCalculation(calculation){
+      if (calculation === 'clear'){
+        calculation = '';
+        updated = '';
+        console.log('Cleared');
+        document.querySelector('.js-output').innerHTML = `${updated}`;
+        localStorage.setItem('updated', updated);
+
+        return;
+      } if (calculation === 'SUM'){
+        updated = eval(updated);
+        console.log(updated);
+        localStorage.setItem('updated', updated);
+        document.querySelector('.js-output').innerHTML = `${updated}`;
+
+        return;
+      } else{
+        updated += calculation;
+        console.log(updated);
+        localStorage.setItem('updated', updated);
+        document.querySelector('.js-output').innerHTML = `${updated}`;
+        return;
+      }
+    };
+*/
+
+    function updateCalculation(calculation){
+      switch(calculation) {
+        case 'clear':
+          updated = '';
+          document.querySelector('.js-output').innerHTML = `${updated}`;
+            break;
+
+        case 'SUM':
+          updated = eval(updated);
+            document.querySelector('.js-output').innerHTML = `${updated}`;
+            break;
+
+          default:
+            updated += calculation;
+            document.querySelector('.js-output').innerHTML = `${updated}`;
+      }
+      console.log(updated);
+      localStorage.setItem('updated', updated);
+
+    };
+  </script>
+
+</body>
+</html>

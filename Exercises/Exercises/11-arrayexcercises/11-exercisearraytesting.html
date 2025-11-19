@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Exercise11a</title>
+</head>
+<body>
+<script>
+
+//11a.
+  console.log("Exercise 11a")
+  const array1 = [
+    10,
+    20,
+    30
+  ];
+  array1[2] = 99;
+  console.log(array1);
+
+//11b
+  console.log("Exercise 11b")
+  
+  function getLastValue(array){
+    const lastValue = array.length - 1;
+    return array[lastValue];
+  }
+  
+  console.log(getLastValue([1, 2, 3]));
+  console.log(getLastValue(["hi", "bye", "cry"]))
+
+  
+console.log("Exercise 11b without a function")
+  const arraytest = ["hi", "bye", "sail"]
+  console.log(arraytest[2]);
+
+
+//11.c.
+console.log ('11.c');
+
+
+/*const array3 = [
+  100,
+  200,
+  300
+];*/
+function arraySwap(array3 = [1,2,3]){
+  const firstIndex = array3[0];
+  const lastIndex = array3.length - 1; //all this code does it tell us where (the number) the last index is. Not the value.
+  const lastValue = array3[lastIndex];  //finds value of lastIndex
+
+  array3[0] = lastValue;
+  array3[lastIndex] = firstIndex;
+  
+  return array3;
+
+}
+
+console.log(arraySwap());
+
+console.log(arraySwap([100,200,300]))
+
+//11d.
+console.log ('11.d');
+
+for (let i = 0; i <= 10; i+=2){
+  console.log(i);
+}
+
+//11e.
+console.log ('11.e');
+for (let i = 5; i >= 0; i --){
+  console.log(i);
+}
+
+//11f. & e. Same as above but while loops.
+console.log('11.f');
+let i = 0;
+while (i <= 10){
+  console.log(i);
+  i += 2;
+}
+
+x = 5
+while (x >= 0){
+  console.log(x);
+  x--;
+}
+
+//11g.
+console.log('11.g');
+
+const array = [1,2,3];
+const result = [];
+
+for (let i = 0; i < array.length; i++){
+  result.push(array[i] + 1);
+}
+
+console.log(result)
+
+
+//11h.
+
+function addOne(array){
+  const result = [];
+  for (let i = 0; i < array.length; i++){
+    result.push(array[i] + 1);
+  }
+  return result
+}
+
+console.log(addOne([4,5,6]));
+
+
+//pracicestuff
+console.log('practice adding and swapping values in an index')
+
+
+
+function secondandlastValue(pArray = [1, 2, 3, 4] ){
+  lastIndex = pArray.length - 1;
+  secondLastIndex = pArray.length - 2;
+
+
+  //console.log(lastIndex); /index number not value
+  //console.log(secondLastIndex); // ^^
+
+  //console.log (
+    lastValue = pArray[lastIndex] //Establishes the lastValue as being from the lastIndex.
+  //);  
+
+  //console.log(
+    secondLastValue = pArray[secondLastIndex] //Establishes the second to last value as being from secondLastIndex
+  //);
+
+
+
+  pArray[lastIndex] = secondLastValue; 
+  pArray[secondLastIndex] = lastValue;
+  return pArray;
+
+  
+}
+console.log(secondandlastValue());
+
+
+
+//11i.
+console.log('11i.');
+
+function addNum(array, num){
+  const results = []; //has to be defined outsifde of for loop due to block scope
+  for (let i = 0; i < array.length; i++){ //array.length is actually 3 which is not the index amount. Due to < operator we don't need to subtract 1
+    results.push(array[i] + num); //.push adds one or more elemnts to an end of the array. Good for loop.
+  }
+  return results;
+}
+
+console.log(addNum([0, 10, 95], 5));
+
+
+//11j.
+
+console.log('11j.');
+function addArrays(array1j, array2j){
+  const twoArraysAdded = []
+  for (let i = 0; i < array1j.length; i++){
+    twoArraysAdded.push(array1j[i] + array2j[i]);
+    }
+  return twoArraysAdded;
+}
+
+
+console.log(addArrays([1,1,2],[1,1,3]));
+console.log(addArrays([4,4,2,4],[1,1,3,4]));
+
+
+//11k. //find how many positive numbers are in an array
+
+console.log('11k.');
+
+function countPositive(nums){
+  let positive = 0;
+
+  for (let i = 0; i < nums.length; i ++){
+    if (nums[i] > 0){
+      positive ++;
+    }
+  }
+  return positive;
+
+}
+console.log(countPositive([1, -3, 5]));
+console.log(countPositive([-2, 3, -5, 7, 10]));
+
+
+//challenge exercises.
+//11L. Create function that takes an array of numbers and returns an object with the minimum and maximum numbers in the array. (Use loop)
+//Note to self: I struggled to complete this exercise with loop. Sort method was easier but q required loop.
+//Loop below is just checking if value is higher and if so adding each time. 
+
+console.log('11L');
+
+function minMax(number){
+const minMaxResults = {
+  min: number[0],
+  max: number[0] //need to define a starting point in Array.
+};
+
+for (let i = 0; i < number.length; i++){
+  const value = number[i];
+  if (value < minMaxResults.min){
+    minMaxResults.min = value;
+  }
+
+  if (value > minMaxResults.max){
+    minMaxResults.max = value;
+  }
+
+}
+  return minMaxResults;
+}
+
+console.log(minMax([1, -3, 5]));
+console.log(minMax([-2, 3, -5, 7, 10]));
+
+
+//11m.
+console.log('11m.');
+console.log('This task required me to update above code to handle min: null, max: null &then minMax([3] => {min:3, max:3).');
+
+function minMaxUpdate(number){
+const minMaxResultsUpdate = {
+  min: null,
+  max: null //need to define a starting point in Array.
+};
+
+for (let i = 0; i < number.length; i++){
+  const value = number[i];
+
+  if (value < minMaxResultsUpdate.min || minMaxResultsUpdate.min === null){
+    minMaxResultsUpdate.min = value;
+  }
+
+  if (value > minMaxResultsUpdate.max || minMaxResultsUpdate.max === null){
+    minMaxResultsUpdate.max = value;
+  }
+
+}
+  return minMaxResultsUpdate;
+}
+
+console.log(minMaxUpdate([1, -3, 5]));
+console.log(minMaxUpdate([-2, 3, -5, 7, 10]));
+
+console.log(minMaxUpdate([]));
+console.log(minMaxUpdate([3]));
+
+//Logical opertors.
+console.log('testing logical OR');
+
+x = true;
+y = false;
+
+if (x == false || y === false ){ // || OR
+  console.log('true'); //logs true because y is false.
+}
+
+if (x === true && y === false){
+  console.log('&& is Logical and. Checks if both are correct'); //logs true because y is false.
+}
+
+if (!y) {
+  console.log('Yeah, y is false :D');
+}
+
+let name = null;
+let resulted = name ?? "Guest";
+console.log(resulted); // "Guest"
+
+// ternary
+
+let user = 'Dan';
+let accept = user === "Dan" ? 'Access' : "No Access"; //compact if else. If user is Dan Access. Else No Access.
+console.log(accept);
+
+let users = null;
+console.log(users?.name); //Safely accesses nested properties. If anything before ?. is null or undefined, it stops and returns undefined instead of throwing an error.
+
+const data = {
+  items: [1 , 2, 3]
+};
+console.log(data?.items?.[0]);
+
+//11n
+console.log('11n.')
+
+function countWords(words){
+  const aresult = {};
+  for (let i = 0; i < words.length; i++){
+    const word = words[i];
+    if (!aresult[word]){
+      aresult[word] = 1;
+    } else {
+      aresult[word]++
+    }
+  }
+
+  return aresult;
+}
+
+console.log(countWords(['apple', 'grape', 'apple', 'apple']))
+</script>
+</body>
+</html>
+

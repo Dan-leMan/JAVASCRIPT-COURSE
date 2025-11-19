@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object PRactice</title>
+</head>
+<body>
+  <script>
+    const product = {
+      name: 'basketball',
+      price: 2095
+    };
+    console.log(product);
+
+    product.price += 500;
+    console.log(product);
+    
+    product['delivery-time'] = '3 days';
+    console.log(product);
+
+    //
+
+    function comparePrice(value1, value2){
+      if (value1.price < value2.price){
+        return value1;
+      } else {
+        return value2;
+      }
+    }
+
+
+    const product1 = {
+      name: 'Carrot',
+      price: 200
+    };
+
+    const product2 = {
+      name: 'Tomato',
+      price: 150
+    };
+
+    console.log(comparePrice(product1, product2));
+
+//
+
+/*function isSameProduct(value3, value4){
+  if (value3.name === value4.name && value3.price === value4.price){
+    return true;
+  } else {
+    return false;
+  }
+};*/
+
+function isSameProduct(value3, value4){
+  return(value3.name === value4.name && value3.price === value4.price);
+};
+
+const product3 = {
+  name: 'keyboard',
+  price: 5000
+};
+
+const product4 = {
+  name: 'keyboard',
+  price: 5000
+};
+
+console.log(isSameProduct(product3, product4));
+
+//
+
+const text = 'HELLo';
+const lower = text.toLowerCase();
+console.log(lower);
+
+//or
+
+console.log('Good morning'.toLowerCase());
+
+//
+
+console.log('hello'.repeat(2));
+    
+  </script>
+</body>
+</html>

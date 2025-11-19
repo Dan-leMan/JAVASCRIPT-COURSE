@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice DOM</title>
+
+  <style>
+    main{
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+    button{
+      background-color: lightgray;
+    }
+
+  </style>
+</head>
+<body>
+  <main>
+    <button>9a</button>
+    <button class='js-button'>9b</button>
+
+    <button class="head"
+    onclick="
+      headortails('heads');
+    ">Head</button>
+
+    <button class="tail" onclick="
+      headortails('tails');
+    ">Tails</button>
+    
+    <p class="js-paragraph"></p>
+
+    <input class="input" placeholder="Enter Your Name" onkeydown="
+    if (event.key === 'Enter'){
+      submit();
+    }
+    ">
+    <button class="js-submit" onclick="
+      submit();
+    ">Submit</button>
+    <p class="js-submit-paragraph"></p>
+  </main>
+
+  <script>
+    //9a
+    /*btn = document.querySelector('button');
+    console.log(btn); */
+
+    //or just do:
+    console.log(document.querySelector('button'));
+
+   //9b
+   document.querySelector('.js-button').innerHTML = '9B done!';
+   //for reusability can declare variable before document and reference with .innerHTML on separate line!
+
+   //9c
+   function headortails(choice){
+    if(choice === 'heads'){
+      document.querySelector('.js-paragraph')
+      .innerText ='You chose heads!';
+    }
+    else if (choice === 'tails'){
+       document.querySelector('.js-paragraph')
+      .innerText ='You chose tails!';
+    }
+   }
+
+
+   //9d
+   function submit(){
+    inputValue = document.querySelector('.input').value;
+    displayValue = document.querySelector('.js-submit-paragraph');
+    displayValue.innerText = `Your name is ${inputValue}`;
+   }
+  
+   
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array and DOM display</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #c6bdbd;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .button-group{
+     
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+    }
+    button{
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+      background-color: rgb(103, 81, 81);
+      border: none;
+      color: white;
+      font-size: large;
+      
+    }
+    .arraylist {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 1rem;
+      padding-left: 2rem;   
+      max-width: 600px;
+      margin: auto;
+      margin-top: 30px;
+    }
+
+    .arraylist li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 40px;
+      color: black;
+      background-clip: padding-box;
+      border-radius: 15px;
+    }
+
+    li{
+      margin-bottom: 30px;
+    }
+
+    .info-box{
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .info{
+      background-color: rgb(103, 81, 81);
+      color: white;
+      padding: 10px;
+      border-radius: 20px;
+      line-height: 2;
+      width: 500px;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <div class="button-group">
+    <button onclick="
+    createArray()">
+    New Array
+    </button>
+    <button onclick="remove('odd');">
+    Remove Odd Numbers
+    </button>
+    <button onclick="remove('even')">
+    Remove Even
+    </button>
+    <button onclick="info()">
+    Info & About
+    </button>
+  </div>
+  <div class="info-box">
+    <p class="info">
+      A project to practise my array and DOM skills. I generate a random array with a loop using Math.floor. Creating a unqiue array on each new button. Each alternating entry is colour coded also using a loop. If the number is odd, the box is displayed as red. The DOM model also allows the removal of both even and/or odd numbers. 
+      
+      The new array button creates an array from a random Math.floor method. Number values range from 1 to 1000. If the number in the array is odd, 
+    </p>
+  </div>
+  <div class="js-main-parent">
+  <ol class="arraylist">
+    <!--List goes here-->
+  </ol>
+  </div>
+
+  <script>
+    let array = [];
+    let value;
+
+     /*function createArray(){
+      array = []
+      document.querySelector('.arraylist').innerHTML = '';
+
+      for (let i = 0; i < 100; i++){
+        array.push(Math.floor(Math.random() * 1000) + 1);
+      }
+
+      for (let i = 0; i < array.length; i++){
+        const value = array[i]
+        const list = document.createElement('li');
+        list.textContent = `${i + 1}. ${value}`;
+        list.style.backgroundColor = i % 2 === 0 ? 'lightgrey' : 'lightblue';
+        document.querySelector('.arraylist').appendChild(list);
+
+        if (value % 2 !== 0){
+          list.style.backgroundColor = 'indianred';
+        }
+      }
+    } */
+
+    function displayData(i){
+      const value = array[i];
+      const list = document.createElement('li');
+      list.textContent = `${i + 1})  ${value}`;
+      list.style.backgroundColor = i % 2 === 0 ? 'lightgrey' : 'lightblue';
+      document.querySelector('.arraylist').appendChild(list);
+
+      if (value % 2 !== 0){
+          list.style.backgroundColor = 'indianred';
+        }
+    }
+
+
+    function createArray(){
+      array = []
+      document.querySelector('.arraylist').innerText = '';
+
+      for (let i = 0; i < 100; i++){
+        array.push(Math.floor(Math.random() * 1000) + 1);
+      }
+
+      for (let i = 0; i < array.length; i++){
+        displayData(i);
+
+      }
+      console.log(array);
+      console.log(array.filter);
+    }
+
+    function remove(x){
+      if (x ==='odd'){
+      array = array.filter(num => num % 2 === 0);
+      } else if (x === 'even'){
+      array = array.filter(num => num % 2 !== 0);
+      }
+      document.querySelector('.arraylist').innerText = '';
+
+      for (let i = 0; i < array.length; i++){
+          displayData(i);
+        }
+      }
+
+    savedInfo = null;
+    mainArrayDOM = document.getElementsByClassName('js-main-parent')[0];
+
+
+    function info(){
+      const infoBox = document.getElementsByClassName('info-box')[0];
+      const infoText = document.getElementsByClassName('info')[0];
+
+
+      if (infoBox) {
+        savedInfo = infoText;
+        infoBox.remove();     
+      } else {
+        const newInfoBox = document.createElement('div');
+        newInfoBox.className = 'info-box';
+        newInfoBox.appendChild(savedInfo);
+        document.body.insertBefore(newInfoBox, mainArrayDOM);
+      }
+    }
+
+    
+  </script>
+</body>
+</html>

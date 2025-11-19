@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On Key Up!</title>
+</head>
+<body>
+  
+  <input placeholder="Input" class="input-data" onkeyup = onKeyUp();;>
+  <p class="display-data"></p>
+
+  <script>
+    function onKeyUp(){
+      /*
+      inputValue = document.querySelector('.input-data').value;
+      document.querySelector('.display-data').innerText=(inputValue);
+      */
+
+     //or...:
+
+     inputElement = document.querySelector('.input-data');
+     document.querySelector('.display-data').innerText = inputElement.value;
+
+    }
+  </script>
+</body>
+</html>
