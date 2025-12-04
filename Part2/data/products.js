@@ -102,7 +102,7 @@ const object3 = {
   }
 };
 object3.method();
-/*
+*/
 
 export const products = [
   {
