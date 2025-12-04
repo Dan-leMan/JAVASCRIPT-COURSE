@@ -10,6 +10,7 @@ export function renderOrderSummary(){
   let cartSummaryHTML = '';
 
   cart.forEach((cartItem) => {
+    
     const productId = cartItem.productId;
 
     const matchingProduct = getProduct(productId);
@@ -20,7 +21,9 @@ export function renderOrderSummary(){
 
       const today = dayjs();
       const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
-      const dateString = deliveryDate.format('dddd, MMMM, D');
+      const dateString = deliveryDate.format('dddd, MMMM, D'
+      );
+
       cartSummaryHTML +=
     `
       <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
@@ -119,7 +122,5 @@ export function renderOrderSummary(){
       renderOrderSummary();
       renderPaymentSummary();
     });
-  })
+  });
 }
-
-renderOrderSummary();
